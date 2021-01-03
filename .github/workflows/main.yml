@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  scripts-job:
+    runs-on: ubuntu-latest
+    name: test MIT scripts action
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Deploy
+      uses: wsmoses/action-deploy-scripts@main
+      with:
+        locker: 'wmoses'
+        remote: programming-jackbox
+        rmRemote: true
+        privateKey: ${{ secrets.PRIVATE_KEY }}
